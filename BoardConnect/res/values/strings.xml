@@ -4,5 +4,9 @@
     <string name="app_name">BoardConnect</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_loading"> Loading </string>
+    <string name="action_discovering">Discovering</string>
+    <string name="action_device_found">Device Found</string>
+    <string name="action_bang_bang"> . </string>
 
 </resources>
