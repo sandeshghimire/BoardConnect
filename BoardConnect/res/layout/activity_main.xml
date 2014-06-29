@@ -3,5 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context="com.example.boardconnect.MainActivity"
     tools:ignore="MergeRootFrame" />
+
