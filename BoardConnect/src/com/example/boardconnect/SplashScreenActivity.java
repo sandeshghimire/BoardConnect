@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,7 +24,6 @@ public class SplashScreenActivity extends Activity {
 
 		// The layout file
 		setContentView(R.layout.activity_splash_screen);
-
 		// Set the Main Activity after 4 seconds
 		TimerTask task = new TimerTask() {
 
