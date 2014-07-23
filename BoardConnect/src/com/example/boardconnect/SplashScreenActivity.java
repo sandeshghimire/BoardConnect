@@ -17,11 +17,10 @@ import android.content.Intent;
 public class SplashScreenActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		int i=1;
 		super.onCreate(savedInstanceState);
-
 		// remove the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-
 		// The layout file
 		setContentView(R.layout.activity_splash_screen);
 		// Set the Main Activity after 4 seconds
