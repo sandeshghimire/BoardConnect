@@ -1,21 +1,20 @@
 package com.example.boardconnect;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 
-import java.util.Timer;
-import java.util.TimerTask;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 public class MainActivity extends ActionBarActivity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,5 +41,19 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public List getCurrentWifi(){
+		WifiManager wiFi;
+		WifiInfo connInfo;
+		List connDetails = new ArrayList();
+		
+		wiFi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+		connInfo = wiFi.getConnectionInfo();
+		connDetails.add(connInfo.getSSID());
+		connDetails.add(connInfo.getMacAddress());
+		connDetails.add(connInfo.getLinkSpeed());
+		
+		return connDetails;
 	}
 }
