@@ -11,17 +11,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.TextView;
+
 
 
 public class MainActivity extends ActionBarActivity {
+	TextView connSSID;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		List connDetails = new ArrayList();
 		
+		super.onCreate(savedInstanceState);
 		// remove title bar.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
+		connSSID = (TextView)findViewById(R.id.text_wifi);
+		
+		connDetails=getCurrentWiFi();
+		connSSID.setText((String)connDetails.get(0));
 	}
 
 	@Override
@@ -43,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public List getCurrentWifi(){
+	public List getCurrentWiFi(){
 		WifiManager wiFi;
 		WifiInfo connInfo;
 		List connDetails = new ArrayList();
