@@ -1,6 +1,7 @@
 package com.example.boardconnect;
 
 import android.support.v7.app.ActionBarActivity;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
