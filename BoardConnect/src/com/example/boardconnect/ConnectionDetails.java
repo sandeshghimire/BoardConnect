@@ -28,7 +28,7 @@ public class ConnectionDetails extends Activity {
 		
 		Bundle getConnData = getIntent().getExtras();
 		ArrayList<String> connData = getConnData.getStringArrayList("connData");
-		connSSID.setText((String)connData.get(1));
+		connSSID.setText((String)connData.get(0));
 		connMAC.setText("MAC Address: " + (String)connData.get(1));
 		connStrength.setText("Signal Strength: " + (String)connData.get(2) + "Mbps");
 	}
