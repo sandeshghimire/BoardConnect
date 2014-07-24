@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		List connDetails = new ArrayList();
+		ArrayList<String> connDetails = new ArrayList<String>();
 		
 		super.onCreate(savedInstanceState);
 		// remove title bar.
@@ -32,16 +33,7 @@ public class MainActivity extends ActionBarActivity {
 		connSSID = (TextView)findViewById(R.id.text_wifi);
 		connDetails=getCurrentWiFi();
 		connSSID.setText((String)connDetails.get(0));
-		connSSID.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent nextActivity = new Intent(MainActivity.this,
-						ConnectionDetails.class);
-				startActivity(nextActivity);
-				MainActivity.this.finish();
-			}
-		});
-
+		connSSID.setOnClickListener(new MyOnClickListener(connDetails));
 	}
 
 	@Override
@@ -63,17 +55,36 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public List getCurrentWiFi(){
+	public ArrayList<String> getCurrentWiFi(){
 		WifiManager wiFi;
 		WifiInfo connInfo;
-		List connDetails = new ArrayList();
+		ArrayList<String> connDetails = new ArrayList<String>();
 		
 		wiFi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 		connInfo = wiFi.getConnectionInfo();
 		connDetails.add(connInfo.getSSID());
 		connDetails.add(connInfo.getMacAddress());
-		connDetails.add(connInfo.getLinkSpeed());
+		connDetails.add(Integer.toString(connInfo.getLinkSpeed()));
 		
 		return connDetails;
 	}
+	
+	public class MyOnClickListener implements OnClickListener{
+		ArrayList<String> connDetails;
+		public MyOnClickListener(ArrayList<String> connDetails){
+			this.connDetails=connDetails;
+		}
+		
+		@Override
+		public void onClick(View v) {
+			Intent nextActivity = new Intent(MainActivity.this,
+					ConnectionDetails.class);
+			Bundle connData = new Bundle();
+			connData.putStringArrayList("connData", connDetails);
+			nextActivity.putExtras(connData);
+			startActivity(nextActivity);
+			MainActivity.this.finish();
+		}
+	}
+	
 }
