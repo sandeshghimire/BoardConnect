@@ -23,13 +23,13 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		List connDetails = new ArrayList();
-		connSSID = (TextView)findViewById(R.id.text_wifi);
 		
 		super.onCreate(savedInstanceState);
 		// remove title bar.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		
+		connSSID = (TextView)findViewById(R.id.text_wifi);
 		connDetails=getCurrentWiFi();
 		connSSID.setText((String)connDetails.get(0));
 		connSSID.setOnClickListener(new View.OnClickListener() {
@@ -38,8 +38,6 @@ public class MainActivity extends ActionBarActivity {
 				Intent nextActivity = new Intent(MainActivity.this,
 						ConnectionDetails.class);
 				startActivity(nextActivity);
-
-				// Close the Splash Screen Activity
 				MainActivity.this.finish();
 			}
 		});
