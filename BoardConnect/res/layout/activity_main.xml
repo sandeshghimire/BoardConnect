@@ -9,13 +9,15 @@
     tools:context="com.example.boardconnect.MainActivity" >
 
     <LinearLayout
+        android:id="@+id/lin_layout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:clickable="true" >
         
         <ImageView
         android:id="@+id/image_wifi"
@@ -26,7 +28,9 @@
         <TextView
         android:id="@+id/text_wifi"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" 
+        android:paddingLeft="5dip"
+        android:clickable="true"/>
         
         
     </LinearLayout>
