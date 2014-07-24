@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -34,7 +35,12 @@ public class MainActivity extends ActionBarActivity {
 		connSSID.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				setContentView(R.layout.connection_details);
+				Intent nextActivity = new Intent(MainActivity.this,
+						ConnectionDetails.class);
+				startActivity(nextActivity);
+
+				// Close the Splash Screen Activity
+				MainActivity.this.finish();
 			}
 		});
 
