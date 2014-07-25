@@ -69,6 +69,7 @@ public class MainActivity extends ActionBarActivity {
 		return connDetails;
 	}
 	
+	//Custom OnClickListener for passing ArrayList
 	public class MyOnClickListener implements OnClickListener{
 		ArrayList<String> connDetails;
 		public MyOnClickListener(ArrayList<String> connDetails){
